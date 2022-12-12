@@ -1,24 +1,21 @@
 #include <stdio.h>
 
 int main() {
-    int character, new_line, tabs, spaces;
+    int character;
 
-    new_line = 0;
-    tabs = 0;
-    spaces = 0;
     while ((character = getchar()) != EOF) {
         if ('\n' == character) {
-            ++new_line;
-        }
-        if ('\t' == character) {
-            ++tabs;
-        }
-        if (' ' == character) {
-            ++spaces;
+            printf("\\n");
+        } else if ('\t' == character) {
+            printf("\\t");
+        } else if ('\b' == character) {
+            printf("\\b");
+        } else if ('\\' == character) {
+            printf("\\");
+        } else {
+            putchar(character);
         }
     }
-
-    printf("lines: %d\ntabs: %d\nspaces: %d\n", new_line, tabs, spaces);
 
     return 0;
 }
