@@ -1,13 +1,14 @@
 #include <stdio.h>
 
 int main() {
-    long nc;
+    int c, nl;
 
-    nc = 0;
-    while (getchar() != EOF)
-        ++nc;
+    nl = 0;
+    while ((c = getchar()) != EOF)
+        if (c == '\n')
+            ++nl;
 
-    printf("%d\n", nc);
+    printf("%d\n", nl);
 
     return 0;
 }
