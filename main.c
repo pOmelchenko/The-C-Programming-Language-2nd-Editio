@@ -3,8 +3,10 @@
 int main() {
     int c;
 
-    while ((c = getchar()) != EOF)
-        putchar(c);
+    while (c = getchar() != EOF)
+        printf("%d\n", c);
+
+    printf("%d", EOF);
 
     return 0;
 }
