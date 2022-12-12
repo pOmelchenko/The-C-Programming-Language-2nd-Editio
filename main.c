@@ -1,14 +1,22 @@
 #include <stdio.h>
 
 int main() {
-    int c, nl;
+    int character, spaces;
 
-    nl = 0;
-    while ((c = getchar()) != EOF)
-        if (c == '\n')
-            ++nl;
+    spaces = 0;
+    while ((character = getchar()) != EOF) {
+        if (' ' == character) {
+            ++spaces;
+        } else {
+            spaces = 0;
+        }
 
-    printf("%d\n", nl);
+        if (spaces > 1) {
+            continue;
+        }
+
+        putchar(character);
+    }
 
     return 0;
 }
