@@ -1,12 +1,13 @@
 #include <stdio.h>
 
 int main() {
-    int c;
+    long nc;
 
-    while (c = getchar() != EOF)
-        printf("%d\n", c);
+    nc = 0;
+    while (getchar() != EOF)
+        ++nc;
 
-    printf("%d", EOF);
+    printf("%d\n", nc);
 
     return 0;
 }
