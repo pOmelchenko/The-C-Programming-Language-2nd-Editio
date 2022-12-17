@@ -18,6 +18,8 @@ int main() {
         characters[i] = 0;
     }
 
+    int actual_max_length = 0;
+
     // пересчитать все слова
     while ((character = getchar()) != EOF) {
         ++characters[character];
@@ -31,6 +33,7 @@ int main() {
         for (int row = 0; row < characters[ch]; row++) printf("#");
         printf("\n");
     }
+    printf("\n");
 
     return 0;
 }
