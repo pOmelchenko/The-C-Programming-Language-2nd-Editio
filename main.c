@@ -1,36 +1,35 @@
 #include <stdio.h>
 
+int power(int m, int n);
+
 /**
- * \brief Упражнение 1.14
+ * \brief Глава 1.7
  *
- * \details Напишите программу для вывода гистограммы частот, с которыми встречаются во входном потоке различные символы
+ * \details Функции
  *
  * \return int
  */
 int main() {
-    int max_length = 255, character;
-
-    // инициализировать массив указав лимитом количество символов в самом длинном слове
-    int characters[max_length];
-
-    // обнулить все элементы массива
-    for (int i = 0; i < max_length; i++) {
-        characters[i] = 0;
-    }
-
-    // пересчитать все слова
-    while ((character = getchar()) != EOF) {
-        ++characters[character];
-    }
-
-    // вывести гистограмму
-    for (int ch = 0; ch < max_length; ch++) {
-        if (0 == characters[ch]) continue;
-
-        printf("%3d | %4d | ", ch, characters[ch]);
-        for (int row = 0; row < characters[ch]; row++) printf("#");
-        printf("\n");
-    }
+    for (int i = 0; i <= 10; ++i)
+        printf("%d %d %d\n", i, power(2, i), power(-3, i));
 
     return 0;
+}
+
+/**
+ * \brief power: возводит base в n-ю степень; n >= 0
+ *
+ * \param m int
+ * \param n int
+ * \return int
+ */
+int power(int base, int n) {
+    int i, p;
+
+    p = 1;
+
+    for (i = 1; i <= n; ++i)
+        p *= base;
+
+    return p;
 }
