@@ -1,8 +1,5 @@
 #include <stdio.h>
 
-#define IN 1
-#define OUT 0
-
 /**
  * \brief Упражнение 1.14
  *
@@ -11,7 +8,7 @@
  * \return int
  */
 int main() {
-    int max_length = 255, length = 0, character, state;
+    int max_length = 255, character;
 
     // инициализировать массив указав лимитом количество символов в самом длинном слове
     int characters[max_length];
