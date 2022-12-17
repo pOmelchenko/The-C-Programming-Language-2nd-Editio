@@ -1,34 +1,78 @@
 #include <stdio.h>
 
-void convert_celsius_to_fahrenheit(int lower, int upper, int step);
+/**
+ * \brief Максимальная длина строки в потоке
+ */
+#define MAXLINE 1000
+
+#define EOL '\0'
+
+int get_line(char line[], int maxline);
+void copy(char to[], char from[]);
 
 /**
- * \brief Глава 1.7
+ * \brief Глава 1.9
  *
- * \details Функции
+ * \details Массивы символов
  *
  * \return int
  */
 int main() {
-    convert_celsius_to_fahrenheit(0, 300, 10);
+    /**
+     * \brief Длина текущей строки
+     */
+    int len;
+
+    /**
+     * \brief Текущая максимальная длина
+     */
+    int max;
+
+    /**
+     * \brief Текущая введенная строка
+     */
+    char line[MAXLINE];
+
+    /**
+     * \brief Самая длинная строка из введенных
+     */
+    char longest[MAXLINE];
+
+    max = 0;
+    while ((len = get_line(line, MAXLINE)) > 0) {
+        if (len > max) {
+            max = len;
+            copy(longest, line);
+        }
+    }
+
+    if (max > 0) {
+        printf("%s", longest);
+    }
 
     return 0;
 }
 
-/**
- * \brief перевод температуры из Цельсий в Фаренгейты
- * @param lower int минимальная температура
- * @param upper int максимальная температура
- * @param step int шаг температуры
- */
-void convert_celsius_to_fahrenheit(int lower, int upper, int step) {
-    float fahrenheit, celsius;
+int get_line(char s[], int lim) {
+    int c, i;
 
-    fahrenheit = lower;
+    for (i = 0; i < lim - 1 && (c = getchar()) != EOF && c != '\n'; ++i)
+        s[i] = c;
 
-    while (fahrenheit <= upper) {
-        celsius = (5.0/9.0) * (fahrenheit - 32.0);
-        printf("%3.0f %6.1f\n", fahrenheit, celsius);
-        fahrenheit += step;
+    if (c == '\n') {
+        s[i] = c;
+        ++i;
     }
+
+    s[i] = EOL;
+
+    return i;
+}
+
+void copy(char to[], char from[]) {
+    int i;
+
+    i = 0;
+    while ((to[i] = from[i]) != EOL)
+        ++i;
 }
