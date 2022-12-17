@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int power(int, int);
+void convert_celsius_to_fahrenheit(int lower, int upper, int step);
 
 /**
  * \brief Глава 1.7
@@ -10,24 +10,25 @@ int power(int, int);
  * \return int
  */
 int main() {
-    for (int i = 0; i <= 10; ++i)
-        printf("%d %d %d\n", i, power(2, i), power(-3, i));
+    convert_celsius_to_fahrenheit(0, 300, 10);
 
     return 0;
 }
 
 /**
- * \brief power: возводит base в n-ю степень; n >= 0
- *
- * \param m int
- * \param n int
- * \return int
+ * \brief перевод температуры из Цельсий в Фаренгейты
+ * @param lower int минимальная температура
+ * @param upper int максимальная температура
+ * @param step int шаг температуры
  */
-int power(int base, int n) {
-    int p = 1;
+void convert_celsius_to_fahrenheit(int lower, int upper, int step) {
+    float fahrenheit, celsius;
 
-    for (int i = 1; i <= n; ++i)
-        p *= base;
+    fahrenheit = lower;
 
-    return p;
+    while (fahrenheit <= upper) {
+        celsius = (5.0/9.0) * (fahrenheit - 32.0);
+        printf("%3.0f %6.1f\n", fahrenheit, celsius);
+        fahrenheit = fahrenheit + step;
+    }
 }
