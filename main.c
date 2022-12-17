@@ -1,69 +1,37 @@
 #include <stdio.h>
 
-#define IN 1
-#define OUT 0
-
 /**
- * \brief Упражнение 1.13
+ * \brief Упражнение 1.14
  *
- * \details Напишите программу для вывода гистограммы длин слов во входном потоке.
- * Построить гистограмму с горизонтальными рядами легко, а вот с вертикальными столбцами трудней.
+ * \details Напишите программу для вывода гистограммы частот, с которыми встречаются во входном потоке различные символы
  *
  * \return int
  */
 int main() {
-    int max_length = 21, length = 0, character, state;
+    int max_length = 255, character;
 
     // инициализировать массив указав лимитом количество символов в самом длинном слове
-    int words[max_length];
+    int characters[max_length];
 
     // обнулить все элементы массива
     for (int i = 0; i < max_length; i++) {
-        words[i] = 0;
+        characters[i] = 0;
     }
 
     int actual_max_length = 0;
 
     // пересчитать все слова
     while ((character = getchar()) != EOF) {
-        if (' ' == character || '\n' == character || '\t' == character) {
-            if (OUT == state) {
-                continue;
-            }
-
-            ++words[length];
-
-            if (actual_max_length < words[length]) {
-                actual_max_length = words[length];
-            }
-
-            // находим актуальный максимум
-            state = OUT;
-            length = 0;
-        } else {
-            state = IN;
-            ++length;
-        }
+        ++characters[character];
     }
 
     // вывести гистограмму
-    for (int row = actual_max_length; row > 0 ; row--) {
-        printf("%3d | ", row);
-        for (int column = 1; column < max_length; column++) {
-            if (words[column] >= row) {
-                printf("%2c%c ", '#', '#');
-            } else {
-                printf("%2c%c ", '.', '.');
-            }
-        }
-        printf("|\n");
+    for (int ch = 0; ch < max_length; ch++) {
+        if (0 == characters[ch]) continue;
 
-    }
-
-    // вывести подвал графика
-    printf("      ");
-    for (int column = 1; column < max_length; column++) {
-        printf("%3d ", column);
+        printf("%3d | %4d | ", ch, characters[ch]);
+        for (int row = 0; row < characters[ch]; row++) printf("#");
+        printf("\n");
     }
     printf("\n");
 
