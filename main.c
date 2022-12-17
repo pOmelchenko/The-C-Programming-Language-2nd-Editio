@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int power(int m, int n);
+int power(int, int);
 
 /**
  * \brief Глава 1.7
@@ -24,11 +24,9 @@ int main() {
  * \return int
  */
 int power(int base, int n) {
-    int i, p;
+    int p = 1;
 
-    p = 1;
-
-    for (i = 1; i <= n; ++i)
+    for (int i = 1; i <= n; ++i)
         p *= base;
 
     return p;
