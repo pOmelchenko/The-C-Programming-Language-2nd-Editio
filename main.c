@@ -29,6 +29,6 @@ void convert_celsius_to_fahrenheit(int lower, int upper, int step) {
     while (fahrenheit <= upper) {
         celsius = (5.0/9.0) * (fahrenheit - 32.0);
         printf("%3.0f %6.1f\n", fahrenheit, celsius);
-        fahrenheit = fahrenheit + step;
+        fahrenheit += step;
     }
 }
