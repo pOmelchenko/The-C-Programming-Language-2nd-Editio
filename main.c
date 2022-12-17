@@ -44,8 +44,6 @@ int main() {
             state = IN;
             ++length;
         }
-
-
     }
 
     // вывести гистограмму
@@ -62,6 +60,7 @@ int main() {
 
     }
 
+    // вывести подвал графика
     printf("      ");
     for (int column = 1; column < max_length; column++) {
         printf("%3d ", column);
