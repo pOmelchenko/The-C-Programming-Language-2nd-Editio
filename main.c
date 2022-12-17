@@ -12,7 +12,7 @@
  * \return int
  */
 int main() {
-    int max_length = 10, length = 0, character, state;
+    int max_length = 21, length = 0, character, state;
 
     // инициализировать массив указав лимитом количество символов в самом длинном слове
     int words[max_length];
@@ -21,6 +21,8 @@ int main() {
     for (int i = 0; i < max_length; i++) {
         words[i] = 0;
     }
+
+    int actual_max_length = 0;
 
     // пересчитать все слова
     while ((character = getchar()) != EOF) {
@@ -31,20 +33,40 @@ int main() {
 
             ++words[length];
 
+            if (actual_max_length < words[length]) {
+                actual_max_length = words[length];
+            }
+
+            // находим актуальный максимум
             state = OUT;
             length = 0;
         } else {
             state = IN;
             ++length;
         }
+
+
     }
 
     // вывести гистограмму
-    for (int word = 0; word < max_length; word++) {
-        printf("%3d | %4d | ", word, words[word]);
-        for (int row = 0; row < words[word]; row++) printf("#");
-        printf("\n");
+    for (int row = actual_max_length; row > 0 ; row--) {
+        printf("%3d | ", row);
+        for (int column = 1; column < max_length; column++) {
+            if (words[column] >= row) {
+                printf("%2c%c ", '#', '#');
+            } else {
+                printf("%2c%c ", '.', '.');
+            }
+        }
+        printf("|\n");
+
     }
+
+    printf("      ");
+    for (int column = 1; column < max_length; column++) {
+        printf("%3d ", column);
+    }
+    printf("\n");
 
     return 0;
 }
