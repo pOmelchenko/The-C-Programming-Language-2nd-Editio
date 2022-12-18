@@ -5,15 +5,19 @@
  */
 #define MAXLINE 1000
 
+/**
+ * \brief Символ конца строки
+ */
 #define EOL '\0'
 
 int get_line(char line[], int maxline);
 void copy(char to[], char from[]);
 
 /**
- * \brief Глава 1.9
+ * \brief Упражнение 1.16
  *
- * \details Массивы символов
+ * \details Доработайте главный модуль программы определения самой длинной строки так, чтобы она выводила правильное
+ * значение для какой угодно длины строк входного потока, насколько это позволяет текст
  *
  * \return int
  */
@@ -53,6 +57,15 @@ int main() {
     return 0;
 }
 
+/**
+ * \brief get_line
+ *
+ * \details считывает строку в s, возвращает ее длину
+ *
+ * \param s строка которую читаем
+ * \param lim лимит символов в строке
+ * \return int длина строки
+ */
 int get_line(char s[], int lim) {
     int c, i;
 
@@ -69,10 +82,17 @@ int get_line(char s[], int lim) {
     return i;
 }
 
+/**
+ * \brief copy
+ *
+ * \details копирует строку 'from' в 'to'; длина 'to' считается достаточной
+ *
+ * \param to массив куда вставляем строку
+ * \param from массив откуда вставляем строку
+ */
 void copy(char to[], char from[]) {
-    int i;
+    int i = 0;
 
-    i = 0;
     while ((to[i] = from[i]) != EOL)
         ++i;
 }
